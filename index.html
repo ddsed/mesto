@@ -1,96 +1,108 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Место</title>
-    <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="./fonts/fonts.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Место</title>
+  <link rel="stylesheet" href="./vendor/normalize.css">
+  <link rel="stylesheet" href="./fonts/fonts.css">
+  <link rel="stylesheet" href="style.css">
+	<script src="./scripts/index.js" defer></script>
 </head>
 <body>
-    <div class="page">
-        <header class="header">
-            <img class="header__logo" src="./images/logo-white.svg" alt="Лого">
-        </header>
+  <div class="page">
+    <header class="header">
+			<img class="header__logo" src="./images/logo-white.svg" alt="Лого">
+    </header>
 
-        <main class="content">
-            <section class="profile">
-                <img class="profile__avatar" src="./images/profile-photo.jpg" alt="Фото">
+    <main class="content">
+      <section class="profile">
+        <img class="profile__avatar" src="./images/profile-photo.jpg" alt="Фото">
 
-                <div class="profile__info">
-                    <h1 class="profile__name">Даша Седова</h1>
-										<button class="profile__edit-button button" type="button"></button>
-                    <p class="profile__description">Фотограф дикой природы</p>
-                </div>
+        <div class="profile__info">
+          <h1 class="profile__name">Даша Седова</h1>
+					<button class="profile__edit-button button" type="button"></button>
+          <p class="profile__description">Фотограф дикой природы</p>
+        </div>
 
-								<button class="profile__add-button button" type="button"></button>
-            </section>
+				<button class="profile__add-button button" type="button"></button>
+      </section>
 
-						<section class="elements">
-							<ul class="elements_grid-container">
-								<li class="element">
-									<img class="element__photo" src="./images/elbrus.jpeg" alt="Эльбрус">
+			<section class="elements">
+				<ul class="elements_grid-container">
+					<li class="element">
+						<img class="element__photo" src="./images/elbrus.jpeg" alt="Эльбрус">
 
-									<div class="element__wrapper">
-										<h2 class="element__title">Эльбрус</h2>
-										<button class="element__like button" type="button"></button>
-									</div>
+						<div class="element__wrapper">
+							<h2 class="element__title">Эльбрус</h2>
+							<button class="element__like button" type="button"></button>
+						</div>
+					</li>
 
-								</li>
+					<li class="element">
+						<img class="element__photo" src="./images/Italy.jpeg" alt="Италия">
 
-								<li class="element">
-									<img class="element__photo" src="./images/Italy.jpeg" alt="Италия">
+						<div class="element__wrapper">
+							<h2 class="element__title">Италия</h2>
+							<button class="element__like button" type="button"></button>
+						</div>
+					</li>
 
-									<div class="element__wrapper">
-										<h2 class="element__title">Италия</h2>
-										<button class="element__like button" type="button"></button>
-									</div>
-								</li>
+					<li class="element">
+						<img class="element__photo" src="./images/norway.jpeg" alt="Норвегия">
 
-								<li class="element">
-									<img class="element__photo" src="./images/norway.jpeg" alt="Норвегия">
+						<div class="element__wrapper">
+							<h2 class="element__title">Норвегия</h2>
+							<button class="element__like button" type="button"></button>
+						</div>
+					</li>
 
-									<div class="element__wrapper">
-										<h2 class="element__title">Норвегия</h2>
-										<button class="element__like button" type="button"></button>
-									</div>
-								</li>
+					<li class="element">
+						<img class="element__photo" src="./images/baikal.jpeg" alt="Байкал">
 
-								<li class="element">
-									<img class="element__photo" src="./images/baikal.jpeg" alt="Байкал">
+						<div class="element__wrapper">
+							<h2 class="element__title">Байкал</h2>
+							<button class="element__like button" type="button"></button>
+						</div>
+					</li>
 
-									<div class="element__wrapper">
-										<h2 class="element__title">Байкал</h2>
-										<button class="element__like button" type="button"></button>
-									</div>
-								</li>
+					<li class="element">
+						<img class="element__photo" src="./images/kamchatka.jpeg" alt="Камчатка">
 
-								<li class="element">
-									<img class="element__photo" src="./images/kamchatka.jpeg" alt="Камчатка">
+						<div class="element__wrapper">
+							<h2 class="element__title">Камчатка</h2>
+							<button class="element__like button" type="button"></button>
+						</div>
+					</li>
 
-									<div class="element__wrapper">
-										<h2 class="element__title">Камчатка</h2>
-										<button class="element__like button" type="button"></button>
-									</div>
-								</li>
+					<li class="element">
+						<img class="element__photo" src="./images/arkhyz.jpeg" alt="Архыз">
 
-								<li class="element">
-									<img class="element__photo" src="./images/arkhyz.jpeg" alt="Архыз">
+						<div class="element__wrapper">
+							<h2 class="element__title">Архыз</h2>
+							<button class="element__like button" type="button"></button>
+						</div>
+					</li>
+				</ul>
+			</section>
+		</main>
 
-									<div class="element__wrapper">
-										<h2 class="element__title">Архыз</h2>
-										<button class="element__like button" type="button"></button>
-									</div>
-								</li>
-							</ul>
-						</section>
-        </main>
+		<footer class="footer">
+			<p class="footer__text">&copy;&nbsp;2020 Mesto Russia</p>
+		</footer>
 
-				<footer class="footer">
-					<p class="footer__text">&copy;&nbsp;2020 Mesto Russia</p>
-				</footer>
-    </div>
+		<div class="popup">
+			<form class="popup__container">
+				<button class="popup__close-button button" type="button"></button>
+				<h2 class="popup__title">Редактировать профиль</h2>
+				<fieldset class="popup__input-container">
+					<input type="text" class="popup__item popup__item_el_name" value="Даша Седова">
+					<input type="text" class="popup__item popup__item_el_description" value="Фотограф дикой природы">
+				</fieldset>
+				<button class="popup__sumbit-button button" type="sumbit">Сохранить</button>
+			</form>
+		</div>
+</div>
 </body>
 </html>

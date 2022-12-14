@@ -193,6 +193,101 @@
   color: #545454;
 }
 
+.popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  padding-top: 195px;
+
+  display: none;
+}
+
+.popup__opened {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.popup__container {
+  max-width: 430px;
+  
+  background: #FFFFFF;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+
+  padding: 34px 36px 37px;
+  box-sizing: border-box;
+
+  position: relative;
+}
+
+.popup__close-button {
+  background-image: url(./images/close-button.svg);
+  width: 32px;
+  height: 32px;
+
+  position: absolute;
+  top: -41px;
+  right: -39px;
+}
+
+.popup__title {
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+
+  margin: 0;
+  margin-bottom: 48px;
+}
+
+.popup__input-container {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.popup__item {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 8px;
+
+  width: 100%;
+  min-height: 27px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+  box-sizing: border-box;
+}
+
+.popup__item_el_name {
+  margin-bottom: 29px;
+}
+
+.popup__sumbit-button {
+  width: 100%;
+
+  background: #000000;
+  border-radius: 2px;
+  
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 18px;
+  text-align: center;
+
+  color: #FFFFFF;
+
+  margin-top: 48px;
+  padding: 14px 0 18px;
+}
 
 
 /*Media*/
@@ -283,6 +378,52 @@
   .footer__text {
     font-size: 14px;
     line-height: 17px;
+  }
+
+  .popup__item {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .popup {
+    padding-top: 123px;
+  }
+
+  .popup__container {
+    max-width: 282px;
+    padding: 25px 22px;
+  
+    position: relative;
+  }
+
+  .popup__close-button {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+
+    position: absolute;
+    top: -36px;
+    right: 0px;
+  }
+
+  .popup__title {
+    font-size: 18px;
+    line-height: 22px;
+  
+    margin: 0;
+    margin-bottom: 75px;
+  }
+
+  .popup__sumbit-button {
+    font-size: 14px;
+    line-height: 18px;
+    padding: 14px 82px;
+    margin-top: 45px;
   }
 }
 
