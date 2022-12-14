@@ -1,13 +1,13 @@
 .profile__info {
-    margin-right: 244px;
-    display: grid;
-    grid-template-columns: repeat(2, max-content);
-    grid-template-rows: 39px max-content;
-    grid-template-areas: 
-    "name button"
-    "description description";
-    gap: 16px 18px;
-  }
+  margin-right: calc(100% - 623px);
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  grid-template-rows: 39px max-content;
+  grid-template-areas: 
+  "name button"
+  "description description";
+  gap: 16px 18px;
+}
   
 @media screen and (max-width: 770px) {
   .profile__info {

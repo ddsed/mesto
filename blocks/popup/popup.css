@@ -6,8 +6,8 @@
 	left: 0;
 	background-color: rgba(0, 0, 0, 0.5);
 
-	padding-top: 195px;
-
+	justify-content: center;
+	align-items: center;
 	display: none;
 }
 

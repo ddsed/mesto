@@ -15,6 +15,10 @@
   box-sizing: border-box;
 }
 
+.popup__item:first-of-type {
+  margin-bottom: 29px;
+}
+
 @media screen and (max-width: 650px) {
   .popup__item {
     font-weight: 400;

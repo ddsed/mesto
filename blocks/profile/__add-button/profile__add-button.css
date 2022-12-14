@@ -7,9 +7,6 @@
   background-position: center;
   border: 2px solid #FFFFFF;
   border-radius: 2px;
-
-  position: absolute;
-  right: 0;
 }
 
 @media screen and (max-width: 770px) {
@@ -18,7 +15,5 @@
     
     width: 282px;
     height: 50px;
-
-    position: initial;
   }
 }

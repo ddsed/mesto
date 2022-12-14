@@ -34,7 +34,7 @@
 
 						<div class="element__wrapper">
 							<h2 class="element__title">Эльбрус</h2>
-							<button class="element__like button" type="button"></button>
+							<button class="element__like" type="button"></button>
 						</div>
 					</li>
 
@@ -43,7 +43,7 @@
 
 						<div class="element__wrapper">
 							<h2 class="element__title">Италия</h2>
-							<button class="element__like button" type="button"></button>
+							<button class="element__like" type="button"></button>
 						</div>
 					</li>
 
@@ -52,7 +52,7 @@
 
 						<div class="element__wrapper">
 							<h2 class="element__title">Норвегия</h2>
-							<button class="element__like button" type="button"></button>
+							<button class="element__like" type="button"></button>
 						</div>
 					</li>
 
@@ -61,7 +61,7 @@
 
 						<div class="element__wrapper">
 							<h2 class="element__title">Байкал</h2>
-							<button class="element__like button" type="button"></button>
+							<button class="element__like" type="button"></button>
 						</div>
 					</li>
 
@@ -70,7 +70,7 @@
 
 						<div class="element__wrapper">
 							<h2 class="element__title">Камчатка</h2>
-							<button class="element__like button" type="button"></button>
+							<button class="element__like" type="button"></button>
 						</div>
 					</li>
 
@@ -79,7 +79,7 @@
 
 						<div class="element__wrapper">
 							<h2 class="element__title">Архыз</h2>
-							<button class="element__like button" type="button"></button>
+							<button class="element__like" type="button"></button>
 						</div>
 					</li>
 				</ul>
@@ -91,15 +91,17 @@
 		</footer>
 
 		<div class="popup">
-			<form class="popup__container">
+			<div class="popup__container">
 				<button class="popup__close-button button" type="button"></button>
-				<h2 class="popup__title">Редактировать профиль</h2>
-				<fieldset class="popup__input-container">
-					<input type="text" class="popup__item popup__item_el_name" value="Даша Седова">
-					<input type="text" class="popup__item popup__item_el_description" value="Фотограф дикой природы">
-				</fieldset>
-				<button class="popup__submit-button button" type="submit">Сохранить</button>
-			</form>
+				<form class="popup__form" name="popup-form">
+					<h2 class="popup__title">Редактировать профиль</h2>
+					<fieldset class="popup__input-container">
+						<input type="text" class="popup__item popup__item_el_name" name="form-name" value="Даша Седова">
+						<input type="text" class="popup__item popup__item_el_description" name="form-description" value="Фотограф дикой природы">
+					</fieldset>
+					<button class="popup__submit-button" type="submit">Сохранить</button>
+				</form>
+			</div>
 		</div>
 	</div>
 </body>
