@@ -19,5 +19,6 @@
 	.elements__grid-container {  
 	  grid-template-columns: 1fr;
 	  grid-template-rows: 1fr;
+	  row-gap: 21px;
 	}
 }
