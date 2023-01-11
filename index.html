@@ -29,60 +29,7 @@
 
 			<section class="elements">
 				<ul class="elements__grid-container">
-					<li class="element">
-						<img class="element__photo" src="./images/elbrus.jpeg" alt="Эльбрус">
-
-						<div class="element__wrapper">
-							<h2 class="element__title">Эльбрус</h2>
-							<button class="element__like" type="button"></button>
-						</div>
-					</li>
-
-					<li class="element">
-						<img class="element__photo" src="./images/Italy.jpeg" alt="Италия">
-
-						<div class="element__wrapper">
-							<h2 class="element__title">Италия</h2>
-							<button class="element__like" type="button"></button>
-						</div>
-					</li>
-
-					<li class="element">
-						<img class="element__photo" src="./images/norway.jpeg" alt="Норвегия">
-
-						<div class="element__wrapper">
-							<h2 class="element__title">Норвегия</h2>
-							<button class="element__like" type="button"></button>
-						</div>
-					</li>
-
-					<li class="element">
-						<img class="element__photo" src="./images/baikal.jpeg" alt="Байкал">
-
-						<div class="element__wrapper">
-							<h2 class="element__title">Байкал</h2>
-							<button class="element__like" type="button"></button>
-						</div>
-					</li>
-
-					<li class="element">
-						<img class="element__photo" src="./images/kamchatka.jpeg" alt="Камчатка">
-
-						<div class="element__wrapper">
-							<h2 class="element__title">Камчатка</h2>
-							<button class="element__like" type="button"></button>
-						</div>
-					</li>
-
-					<li class="element">
-						<img class="element__photo" src="./images/arkhyz.jpeg" alt="Архыз">
-
-						<div class="element__wrapper">
-							<h2 class="element__title">Архыз</h2>
-							<button class="element__like" type="button"></button>
-						</div>
-					</li>
-				</ul>
+				</ul> 
 			</section>
 		</main>
 
@@ -103,6 +50,31 @@
 				</form>
 			</div>
 		</div>
+
+		<div class="popup-add">
+			<div class="popup-add__container">
+				<button class="popup-add__close-button button" type="button"></button>
+				<form class="popup-add__form" name="popup-form">
+					<h2 class="popup-add__title">Новое место</h2>
+					<fieldset class="popup-add__input-container">
+						<input type="text" class="popup-add__item popup-add__item_el_name" name="form-name" placeholder="Название">
+						<input type="text" class="popup-add__item popup-add__item_el_description" name="form-description" placeholder="Ссылка на картинку">
+					</fieldset>
+					<button class="popup-add__submit-button" type="submit">Создать</button>
+				</form>
+			</div>
+		</div>
+
+		<template class="cards-template">
+			<li class="element">
+				<img class="element__photo">
+
+				<div class="element__wrapper">
+					<h2 class="element__title"></h2>
+					<button class="element__like" type="button"></button>
+				</div>
+			</li>
+		</template>
 	</div>
 </body>
 </html>
