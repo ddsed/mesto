@@ -16,10 +16,6 @@
 
 	align-self: end;
 }
-  
-.element__like:focus {
-	background-image: url(../../../images/like-active.svg);
-}
 
 .element__like:hover {
 	opacity: 0.5;

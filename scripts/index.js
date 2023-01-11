@@ -30,6 +30,7 @@ editButton.addEventListener('click', popupOpened);
 closeButton.addEventListener('click', popupClosed);
 formElement.addEventListener('submit', handleFormSubmit);
 
+// СПРИНТ 5
 const initialCards = [
     {
       name: 'Эльбрус',
@@ -57,6 +58,8 @@ const initialCards = [
     }
   ];
 
+
+// Изначальные карточки
   const cardsContainer = document.querySelector('.elements__grid-container');
   const cardsTemplate = document.querySelector('.cards-template').content.querySelector('.element');
 
@@ -64,8 +67,17 @@ const initialCards = [
     const card = cardsTemplate.cloneNode(true);
     const cardName = card.querySelector('.element__title');
     cardName.textContent = name;
+
     const cardImage = card.querySelector('.element__photo');
     cardImage.src = link; 
+    cardImage.alt = name; 
+
+    const likeButton = card.querySelector('.element__like');
+    const likeCard = (evt) => {
+      evt.target.classList.toggle('element__like_active');
+    };
+
+    likeButton.addEventListener('click', likeCard);
 
     return card;
   }
@@ -79,6 +91,8 @@ const initialCards = [
 
   renderCards();
 
+
+// Открытие и закрытие попапа добавления новых карточек
   const addButton = document.querySelector('.profile__add-button');
   const popupAdd = document.querySelector('.popup-add');
   const closeButtonPopupAdd = popupAdd.querySelector('.popup-add__close-button');
@@ -94,4 +108,20 @@ const initialCards = [
 
   addButton.addEventListener('click', popupAddOpened);
   closeButtonPopupAdd.addEventListener('click', popupAddClosed);
+
+
+// Создание новых карточек
+  const formCreateNewCard = document.querySelector('.popup-add__form');
+  const newCardNameInput = formCreateNewCard.querySelector('.popup-add__item_el_name');
+  const newCardDescriptionInput = formCreateNewCard.querySelector('.popup-add__item_el_description');
+  
+  function createNewCard(evt) {
+    evt.preventDefault();
+    const newCard = createCard({name: newCardNameInput.value, link: newCardDescriptionInput.value});
+    cardsContainer.prepend(newCard);
+
+    popupAddClosed();
+  }
+
+  formCreateNewCard.addEventListener('submit', createNewCard);
 
