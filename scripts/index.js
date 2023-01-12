@@ -72,12 +72,21 @@ const initialCards = [
     cardImage.src = link; 
     cardImage.alt = name; 
 
+    // лайк
     const likeButton = card.querySelector('.element__like');
     const likeCard = (evt) => {
       evt.target.classList.toggle('element__like_active');
-    };
+    }
 
     likeButton.addEventListener('click', likeCard);
+
+    // удаление
+    const deleteButton = card.querySelector('.element__delete');
+    const deleteCard = () => {
+      card.remove();
+    }
+
+    deleteButton.addEventListener('click', deleteCard);
 
     return card;
   }
