@@ -102,6 +102,7 @@ const initialCards = [
 
 
 // Открытие и закрытие попапа добавления новых карточек
+
   const addButton = document.querySelector('.profile__add-button');
   const popupAdd = document.querySelector('.popup-add');
   const closeButtonPopupAdd = popupAdd.querySelector('.popup-add__close-button');
@@ -134,3 +135,28 @@ const initialCards = [
 
   formCreateNewCard.addEventListener('submit', createNewCard);
 
+  // Попап фото 
+  const popupImage = document.querySelector('.popup-image');
+  const closeButtonPopupImage = popupImage.querySelector('.popup-image__close-button');
+
+  function popupImageOpened() {
+    popupImage.classList.add('popup-image_opened');
+  }
+
+  function popupImageClosed() {
+    popupImage.classList.remove('popup-image_opened');
+  }
+
+  const photosForPopupImage = cardsContainer.querySelectorAll('.element__photo');
+  const popupImagePhoto = popupImage.querySelector('.popup-image__photo');
+  const popupImageTitle = popupImage.querySelector('.popup-image__title');
+
+  photosForPopupImage.forEach((item) => {
+    item.addEventListener('click', () => {
+      popupImagePhoto.src = item.getAttribute('src');
+      popupImageTitle.textContent = item.parentNode.querySelector('.element__title').textContent;
+      popupImageOpened();
+    });
+  });
+
+  closeButtonPopupImage.addEventListener('click', popupImageClosed);
