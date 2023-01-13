@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
   <link rel="stylesheet" href="./pages/index.css">
+
+  <script src="./scripts/initial-cards.js" defer></script>
 	<script src="./scripts/index.js" defer></script>
 </head>
 <body>
@@ -37,39 +39,35 @@
 			<p class="footer__text">&copy;&nbsp;2020 Mesto Russia</p>
 		</footer>
 
-		<div class="popup">
+		<div class="popup popup_type_edit-profile">
 			<div class="popup__container">
 				<button class="popup__close-button button" type="button"></button>
-				<form class="popup__form" name="popup-form">
+				<form class="popup__form popup__form_type_edit-profile" name="popup-form">
 					<h2 class="popup__title">Редактировать профиль</h2>
-					<fieldset class="popup__input-container">
-						<input type="text" class="popup__item popup__item_el_name" name="form-name" value="Даша Седова">
-						<input type="text" class="popup__item popup__item_el_description" name="form-description" value="Фотограф дикой природы">
-					</fieldset>
+					<input type="text" class="popup__item popup__item_el_name" name="form-name" placeholder="Имя">
+					<input type="text" class="popup__item popup__item_el_description" name="form-description" placeholder="О себе">
 					<button class="popup__submit-button" type="submit">Сохранить</button>
 				</form>
 			</div>
 		</div>
 
-		<div class="popup-add">
-			<div class="popup-add__container">
-				<button class="popup-add__close-button button" type="button"></button>
-				<form class="popup-add__form" name="popup-form">
-					<h2 class="popup-add__title">Новое место</h2>
-					<fieldset class="popup-add__input-container">
-						<input type="text" class="popup-add__item popup-add__item_el_name" name="form-name" placeholder="Название">
-						<input type="text" class="popup-add__item popup-add__item_el_description" name="form-description" placeholder="Ссылка на картинку">
-					</fieldset>
-					<button class="popup-add__submit-button" type="submit">Создать</button>
+		<div class="popup popup_type_add-card">
+			<div class="popup__container">
+				<button class="popup__close-button button" type="button"></button>
+				<form class="popup__form popup__form_type_add-card" name="popup-form">
+					<h2 class="popup__title">Новое место</h2>
+					<input type="text" class="popup__item popup__item_el_name" name="form-name" placeholder="Название">
+					<input type="text" class="popup__item popup__item_el_description" name="form-description" placeholder="Ссылка на картинку">
+					<button class="popup__submit-button" type="submit">Создать</button>
 				</form>
 			</div>
 		</div>
 
-		<div class="popup-image">
-			<div class="popup-image__container">
-				<button class="popup-image__close-button button" type="button"></button>
-				<img class="popup-image__photo">
-				<h2 class="popup-image__title"></h2>
+		<div class="popup popup_type_image">
+			<div class="popup__container_type_image">
+				<button class="popup__close-button button" type="button"></button>
+				<img class="popup__photo">
+				<h2 class="popup__title_type_image"></h2>
 			</div>
 		</div>
 
