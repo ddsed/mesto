@@ -13,6 +13,8 @@
   overflow: hidden;
 
   box-sizing: border-box;
+
+  position: relative;
 }
 
 .popup__item:first-of-type {

@@ -24,6 +24,10 @@
   cursor: pointer;
 }
 
+.popup__submit-button_inactive {
+  opacity: 0.2;
+}
+
 @media screen and (max-width: 600px) {
   .popup__submit-button {
     font-size: 14px;
