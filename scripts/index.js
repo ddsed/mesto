@@ -11,26 +11,25 @@ const profileDescription = document.querySelector('.profile__description');
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', pressEscapeKey);
-  popup.addEventListener('click', clickOnOverlay);
+  popup.addEventListener('mousedown', clickOnOverlay);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', pressEscapeKey);
-  popup.removeEventListener('click', clickOnOverlay);
+  popup.removeEventListener('mousedown', clickOnOverlay);
 }
 
 const pressEscapeKey = (evt) => {
-  const popup = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
-      closePopup(popup);
+    const popup = document.querySelector('.popup_opened');
+    closePopup(popup);
   }
 }
 
 const clickOnOverlay = (evt) => {
-  const popup = document.querySelector('.popup_opened');
-  if (evt.target === popup) {
-      closePopup(popup);
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.currentTarget);
   }
 }
 
@@ -144,8 +143,9 @@ formEditProfile.addEventListener('submit', handleProfileFormSubmit);
   const newCardNameInput = formCreateNewCard.querySelector('.popup__item_el_name');
   const newCardDescriptionInput = formCreateNewCard.querySelector('.popup__item_el_description');
   
-  function createNewCard(evt) {
+  function submitCardForm(evt) {
     evt.preventDefault();
+
     const newCard = createCard({name: newCardNameInput.value, link: newCardDescriptionInput.value});
     cardsContainer.prepend(newCard);
 
@@ -153,4 +153,4 @@ formEditProfile.addEventListener('submit', handleProfileFormSubmit);
     evt.currentTarget.reset();
   }
 
-  formCreateNewCard.addEventListener('submit', createNewCard);
+  formCreateNewCard.addEventListener('submit', submitCardForm);

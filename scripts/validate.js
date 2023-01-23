@@ -53,6 +53,8 @@
     const inputList = Array.from(formElement.querySelectorAll(obj.inputSelector));
     const buttonElement = formElement.querySelector(obj.submitButtonSelector);
 
+    toggleButtonState(inputList, buttonElement, obj);
+
     inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         isValid(formElement, inputElement, obj);
