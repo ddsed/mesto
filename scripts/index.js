@@ -154,13 +154,8 @@ formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 
     const buttonSubmit = formCreateNewCard.querySelector('.popup__submit-button');
 
-    if (!newCardNameInput.validity.valid || !newCardDescriptionInput.validity.valid) {
-      buttonSubmit.classList.add('popup__submit-button_inactive');
-      buttonSubmit.setAttribute('disabled', true);
-    } else {
-      buttonSubmit.classList.remove('popup__submit-button_inactive');
-      buttonSubmit.removeAttribute('disabled');
-    }
+    buttonSubmit.classList.add('popup__submit-button_inactive');
+    buttonSubmit.setAttribute('disabled', true);
   }
 
   formCreateNewCard.addEventListener('submit', submitCardForm);
