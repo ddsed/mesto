@@ -1,3 +1,6 @@
+import { initialCards } from './initial-cards.js';
+import Card from './Card.js';
+
 // Редактирование профиля
 const buttonEdit = document.querySelector('.profile__edit-button');
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
@@ -56,6 +59,54 @@ buttonEdit.addEventListener('click', openProfilePopup);
 buttonCloseProfile.addEventListener('click', closeProfilePopup);
 formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 
+
+//ПР7
+
+// Изначальные карточки
+const config = {
+  selectorCardsList: '.elements__grid-container',
+  selectorTemplateCard: '.cards-template',
+}
+
+const cardsList = document.querySelector(config.selectorCardsList);
+
+
+for (const item of initialCards) {
+  const card = new Card(config.selectorTemplateCard, item);
+  cardsList.append(card.getElement());
+}
+
+
+// Новые карточки
+const formCreateNewCard = document.querySelector('.popup__form_type_add-card');
+const newCardNameInput = formCreateNewCard.querySelector('.popup__item_el_name');
+const newCardDescriptionInput = formCreateNewCard.querySelector('.popup__item_el_description');
+
+const renderCard = (el) =>  {
+  cardsList.prepend(createCard(el));
+}
+
+const createCard = (el) => {
+  const card = new Card(config.selectorTemplateCard, el);
+  return card.getElement();
+}
+
+const submitCardForm = (evt) => {
+  evt.preventDefault();
+  renderCard({name: newCardNameInput.value, link: newCardDescriptionInput.value});
+  
+  closePopup(popupAdd);
+  evt.currentTarget.reset();
+
+  const buttonSubmit = formCreateNewCard.querySelector('.popup__submit-button');
+
+  buttonSubmit.classList.add('popup__submit-button_inactive');
+  buttonSubmit.setAttribute('disabled', true);
+}
+
+formCreateNewCard.addEventListener('submit', submitCardForm);
+
+ /*
 // Изначальные карточки
   const cardsContainer = document.querySelector('.elements__grid-container');
   const cardsTemplate = document.querySelector('.cards-template').content.querySelector('.element');
@@ -64,6 +115,7 @@ formEditProfile.addEventListener('submit', handleProfileFormSubmit);
   const popupImagePhoto = popupImage.querySelector('.popup__photo');
   const popupImageTitle = popupImage.querySelector('.popup__title_type_image');
 
+  
   function createCard({ name, link }) {
     const card = cardsTemplate.cloneNode(true);
     const cardName = card.querySelector('.element__title');
@@ -100,7 +152,7 @@ formEditProfile.addEventListener('submit', handleProfileFormSubmit);
     cardImage.addEventListener('click', openImageCloseView);
 
     return card;
-  }
+  } 
 
   // Закрытие фото карточек
   function closePopupImage() {
@@ -109,6 +161,7 @@ formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 
   buttonCloseImage.addEventListener('click', closePopupImage);
 
+  
   // Рендер карт
   function renderCards() {
     initialCards.forEach(item => {
@@ -117,7 +170,7 @@ formEditProfile.addEventListener('submit', handleProfileFormSubmit);
     });
   }
 
-  renderCards();
+  renderCards(); */
 
 // Открытие и закрытие попапа добавления новых карточек
   const buttonAdd = document.querySelector('.profile__add-button');
@@ -137,25 +190,3 @@ formEditProfile.addEventListener('submit', handleProfileFormSubmit);
   buttonAdd.addEventListener('click', openAddPopup);
   buttonCloseCard.addEventListener('click', closeAddPopup);
 
-
-// Создание новых карточек
-  const formCreateNewCard = document.querySelector('.popup__form_type_add-card');
-  const newCardNameInput = formCreateNewCard.querySelector('.popup__item_el_name');
-  const newCardDescriptionInput = formCreateNewCard.querySelector('.popup__item_el_description');
-  
-  function submitCardForm(evt) {
-    evt.preventDefault();
-
-    const newCard = createCard({name: newCardNameInput.value, link: newCardDescriptionInput.value});
-    cardsContainer.prepend(newCard);
-
-    closePopup(popupAdd);
-    evt.currentTarget.reset();
-
-    const buttonSubmit = formCreateNewCard.querySelector('.popup__submit-button');
-
-    buttonSubmit.classList.add('popup__submit-button_inactive');
-    buttonSubmit.setAttribute('disabled', true);
-  }
-
-  formCreateNewCard.addEventListener('submit', submitCardForm);

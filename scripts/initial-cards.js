@@ -24,3 +24,5 @@ const initialCards = [
       link: './images/arkhyz.jpeg'
     }
   ];
+
+  export { initialCards };
