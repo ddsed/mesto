@@ -87,7 +87,7 @@ const renderCard = (el) =>  {
 }
 
 const createCard = (el) => {
-  const card = new Card(config.selectorTemplateCard, el);
+  const card = new Card(config.selectorTemplateCard, el, openImageCloseView);
   return card.getElement();
 }
 
@@ -105,6 +105,25 @@ const submitCardForm = (evt) => {
 }
 
 formCreateNewCard.addEventListener('submit', submitCardForm);
+
+//Большая картинка
+const popupImage = document.querySelector('.popup_type_image');
+const popupImagePhoto = popupImage.querySelector('.popup__photo');
+const popupImageTitle = popupImage.querySelector('.popup__title_type_image');
+const buttonCloseImage = popupImage.querySelector('.popup__close-button');
+
+export const openImageCloseView = (name, link) => {
+  popupImagePhoto.alt = name;
+  popupImagePhoto.src = link;
+  popupImageTitle.textContent = name;
+  openPopup(popupImage);
+};
+
+function closePopupImage() {
+  closePopup(popupImage);
+}
+
+buttonCloseImage.addEventListener('click', closePopupImage);
 
  /*
 // Изначальные карточки

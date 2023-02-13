@@ -1,9 +1,12 @@
+import { openImageCloseView } from "./index.js";
+
 class Card {
-    constructor(templateSelector, data) {
+    constructor(templateSelector, data, openImageCloseView) {
         this._name = data.name;
         this._photo = data.link;
         this._alt = data.name;
         this._templateSelector = templateSelector;
+        this._openImageCloseView = openImageCloseView;
         }
 
     _getElementFromTemplate() {
@@ -24,6 +27,10 @@ class Card {
         this._element.querySelector(".element__like").classList.toggle('element__like_active');
     }
 
+    _imgCloseView() {
+        openImageCloseView(this._name, this._photo);
+    }
+
     _addEventListeners() {
         this._element.querySelector('.element__delete').addEventListener('click', () => {
             this._deleteCard();
@@ -31,6 +38,10 @@ class Card {
 
         this._element.querySelector('.element__like').addEventListener('click', () => {
             this._likeCard();
+        })
+
+        this._element.querySelector('.element__photo').addEventListener('click', () => {
+            this._imgCloseView();
         })
     }
 
