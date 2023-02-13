@@ -1,6 +1,6 @@
 import { openImageCloseView } from "./index.js";
 
-class Card {
+export default class Card {
     constructor(templateSelector, data, openImageCloseView) {
         this._name = data.name;
         this._photo = data.link;
@@ -56,5 +56,3 @@ class Card {
         return this._element;
     }
 }
-
-export default Card;

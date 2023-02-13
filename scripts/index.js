@@ -1,5 +1,6 @@
 import { initialCards } from './initial-cards.js';
 import Card from './Card.js';
+import { FormValidator, configValidation } from './FormValidator.js';
 
 // Редактирование профиля
 const buttonEdit = document.querySelector('.profile__edit-button');
@@ -76,7 +77,6 @@ for (const item of initialCards) {
   cardsList.append(card.getElement());
 }
 
-
 // Новые карточки
 const formCreateNewCard = document.querySelector('.popup__form_type_add-card');
 const newCardNameInput = formCreateNewCard.querySelector('.popup__item_el_name');
@@ -125,71 +125,14 @@ function closePopupImage() {
 
 buttonCloseImage.addEventListener('click', closePopupImage);
 
- /*
-// Изначальные карточки
-  const cardsContainer = document.querySelector('.elements__grid-container');
-  const cardsTemplate = document.querySelector('.cards-template').content.querySelector('.element');
-  const popupImage = document.querySelector('.popup_type_image');
-  const buttonCloseImage = popupImage.querySelector('.popup__close-button');
-  const popupImagePhoto = popupImage.querySelector('.popup__photo');
-  const popupImageTitle = popupImage.querySelector('.popup__title_type_image');
+//Валидация
+const popupAddNewCard = document.querySelector('.popup_type_add-card');
 
-  
-  function createCard({ name, link }) {
-    const card = cardsTemplate.cloneNode(true);
-    const cardName = card.querySelector('.element__title');
-    cardName.textContent = name;
+const validationProfile = new FormValidator(configValidation, popupEditProfile);
+const validationNewCard = new FormValidator(configValidation, popupAddNewCard);
 
-    const cardImage = card.querySelector('.element__photo');
-    cardImage.src = link; 
-    cardImage.alt = name; 
-
-    // Лайк
-    const buttonLike = card.querySelector('.element__like');
-    const likeCard = (evt) => {
-      evt.target.classList.toggle('element__like_active');
-    }
-
-    buttonLike.addEventListener('click', likeCard);
-
-    // Удаление
-    const buttonDelete = card.querySelector('.element__delete');
-    const deleteCard = () => {
-      card.remove();
-    }
-
-    buttonDelete.addEventListener('click', deleteCard);
-
-    // Просмотр фото карточек
-    function openImageCloseView() {
-      openPopup(popupImage);
-      popupImagePhoto.src = link;
-      popupImagePhoto.alt = name; 
-      popupImageTitle.textContent = name;
-    }
-
-    cardImage.addEventListener('click', openImageCloseView);
-
-    return card;
-  } 
-
-  // Закрытие фото карточек
-  function closePopupImage() {
-    closePopup(popupImage);
-  }
-
-  buttonCloseImage.addEventListener('click', closePopupImage);
-
-  
-  // Рендер карт
-  function renderCards() {
-    initialCards.forEach(item => {
-        const cardHtml = createCard(item);
-        cardsContainer.append(cardHtml);
-    });
-  }
-
-  renderCards(); */
+validationProfile.enableValidation();
+validationNewCard.enableValidation();
 
 // Открытие и закрытие попапа добавления новых карточек
   const buttonAdd = document.querySelector('.profile__add-button');
