@@ -91,7 +91,6 @@ formCreateNewCard.addEventListener('submit', submitCardForm);
 const popupImage = document.querySelector('.popup_type_image');
 const popupImagePhoto = popupImage.querySelector('.popup__photo');
 const popupImageTitle = popupImage.querySelector('.popup__title_type_image');
-const buttonCloseImage = popupImage.querySelector('.popup__close-button');
 
 function handleCardClick(name, link) {
   popupImagePhoto.src = link;
@@ -104,8 +103,6 @@ function closePopupImage() {
   closePopup(popupImage);
 }
 
-buttonCloseImage.addEventListener('click', closePopupImage);
-
 //Валидация
 const popupAddNewCard = document.querySelector('.popup_type_add-card');
 
@@ -116,35 +113,32 @@ validationProfile.enableValidation();
 validationNewCard.enableValidation();
 
 // Открытие и закрытие попапа добавления новых карточек
-  const buttonAdd = document.querySelector('.profile__add-button');
-  const popupAdd = document.querySelector('.popup_type_add-card');
-  const buttonCloseCard = popupAdd.querySelector('.popup__close-button');
+const buttonAdd = document.querySelector('.profile__add-button');
+const popupAdd = document.querySelector('.popup_type_add-card');
 
- function openAddPopup(evt) {
-    evt.preventDefault();
+function openAddPopup(evt) {
+  evt.preventDefault();
 
-    validationNewCard.resetValidation();
+  validationNewCard.resetValidation();
 
-    openPopup(popupAdd);
-  }
+  openPopup(popupAdd);
+}
 
-  function closeAddPopup() {
-    closePopup(popupAdd);
-  }
+function closeAddPopup() {
+  closePopup(popupAdd);
+}
 
-  buttonAdd.addEventListener('click', openAddPopup);
-  buttonCloseCard.addEventListener('click', closeAddPopup);
+buttonAdd.addEventListener('click', openAddPopup);
 
 // Изначальные карточки
-  const config = {
-    selectorCardsList: '.elements__grid-container',
-    selectorTemplateCard: '.cards-template',
-  }
+const config = {
+  selectorCardsList: '.elements__grid-container',
+  selectorTemplateCard: '.cards-template',
+}
 
-  const cardsList = document.querySelector(config.selectorCardsList);
+const cardsList = document.querySelector(config.selectorCardsList);
 
-  for (const item of initialCards) {
-    const card = createCard(item);
-    cardsList.append(card);
-  }
-
+for (const item of initialCards) {
+  const card = createCard(item);
+  cardsList.append(card);
+}
