@@ -34,7 +34,7 @@
       errorElement.classList.add(this._errorClass);
     };
 
-    _hideIputError(inputElement) {
+    _hideInputError(inputElement) {
       const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
 
       inputElement.classList.remove(this._inputErrorClass);
@@ -47,7 +47,7 @@
       if (!inputElement.validity.valid) {
         this._showInputError(inputElement, inputElement.validationMessage);
       } else {
-        this._hideIputError(inputElement);
+        this._hideInputError(inputElement);
       }
     };
 
@@ -77,6 +77,13 @@
 
           this._toggleButtonState();
         });
+      });
+    };
+
+    resetValidation() {
+      this._toggleButtonState()
+      this._inputList.forEach((inputElement) => {
+        this._hideInputError(inputElement);
       });
     };
 

@@ -5,7 +5,7 @@ import { FormValidator, configValidation } from './FormValidator.js';
 // Редактирование профиля
 const buttonEdit = document.querySelector('.profile__edit-button');
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
-const buttonCloseProfile = popupEditProfile.querySelector('.popup__close-button');
+const closeButtons = document.querySelectorAll('.popup__close-button');
 const formEditProfile = popupEditProfile.querySelector('.popup__form_type_edit-profile');
 const nameInput = formEditProfile.querySelector('.popup__item_el_name');
 const descriptionInput = formEditProfile.querySelector('.popup__item_el_description');
@@ -40,12 +40,9 @@ const clickOnOverlay = (evt) => {
 function openProfilePopup() {
     nameInput.value = profileName.textContent;
     descriptionInput.value = profileDescription.textContent;
+    validationProfile.resetValidation();
 
     openPopup(popupEditProfile);
-}
-
-function closeProfilePopup() {
-  closePopup(popupEditProfile);
 }
 
 function handleProfileFormSubmit (evt) {
@@ -57,25 +54,14 @@ function handleProfileFormSubmit (evt) {
 }
 
 buttonEdit.addEventListener('click', openProfilePopup);
-buttonCloseProfile.addEventListener('click', closeProfilePopup);
 formEditProfile.addEventListener('submit', handleProfileFormSubmit);
+closeButtons.forEach((button) => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
+});
 
 
 //ПР7
-
-// Изначальные карточки
-const config = {
-  selectorCardsList: '.elements__grid-container',
-  selectorTemplateCard: '.cards-template',
-}
-
-const cardsList = document.querySelector(config.selectorCardsList);
-
-
-for (const item of initialCards) {
-  const card = new Card(config.selectorTemplateCard, item);
-  cardsList.append(card.getElement());
-}
 
 // Новые карточки
 const formCreateNewCard = document.querySelector('.popup__form_type_add-card');
@@ -87,7 +73,7 @@ const renderCard = (el) =>  {
 }
 
 const createCard = (el) => {
-  const card = new Card(config.selectorTemplateCard, el, openImageCloseView);
+  const card = new Card(config.selectorTemplateCard, el, handleCardClick);
   return card.getElement();
 }
 
@@ -97,11 +83,6 @@ const submitCardForm = (evt) => {
   
   closePopup(popupAdd);
   evt.currentTarget.reset();
-
-  const buttonSubmit = formCreateNewCard.querySelector('.popup__submit-button');
-
-  buttonSubmit.classList.add('popup__submit-button_inactive');
-  buttonSubmit.setAttribute('disabled', true);
 }
 
 formCreateNewCard.addEventListener('submit', submitCardForm);
@@ -112,12 +93,12 @@ const popupImagePhoto = popupImage.querySelector('.popup__photo');
 const popupImageTitle = popupImage.querySelector('.popup__title_type_image');
 const buttonCloseImage = popupImage.querySelector('.popup__close-button');
 
-export const openImageCloseView = (name, link) => {
-  popupImagePhoto.alt = name;
+function handleCardClick(name, link) {
   popupImagePhoto.src = link;
+  popupImagePhoto.alt = name;
   popupImageTitle.textContent = name;
   openPopup(popupImage);
-};
+}
 
 function closePopupImage() {
   closePopup(popupImage);
@@ -142,6 +123,8 @@ validationNewCard.enableValidation();
  function openAddPopup(evt) {
     evt.preventDefault();
 
+    validationNewCard.resetValidation();
+
     openPopup(popupAdd);
   }
 
@@ -151,4 +134,17 @@ validationNewCard.enableValidation();
 
   buttonAdd.addEventListener('click', openAddPopup);
   buttonCloseCard.addEventListener('click', closeAddPopup);
+
+// Изначальные карточки
+  const config = {
+    selectorCardsList: '.elements__grid-container',
+    selectorTemplateCard: '.cards-template',
+  }
+
+  const cardsList = document.querySelector(config.selectorCardsList);
+
+  for (const item of initialCards) {
+    const card = createCard(item);
+    cardsList.append(card);
+  }
 

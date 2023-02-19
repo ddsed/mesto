@@ -1,12 +1,10 @@
-import { openImageCloseView } from "./index.js";
-
 export default class Card {
-    constructor(templateSelector, data, openImageCloseView) {
+    constructor(templateSelector, data, handleCardClick) {
         this._name = data.name;
         this._photo = data.link;
         this._alt = data.name;
         this._templateSelector = templateSelector;
-        this._openImageCloseView = openImageCloseView;
+        this._handleCardClick = handleCardClick;
         }
 
     _getElementFromTemplate() {
@@ -23,36 +21,38 @@ export default class Card {
         this._element.remove();
     }
 
-    _likeCard() {
-        this._element.querySelector(".element__like").classList.toggle('element__like_active');
-    }
-
-    _imgCloseView() {
-        openImageCloseView(this._name, this._photo);
-    }
-
-    _addEventListeners() {
-        this._element.querySelector('.element__delete').addEventListener('click', () => {
-            this._deleteCard();
-        })
-
-        this._element.querySelector('.element__like').addEventListener('click', () => {
-            this._likeCard();
-        })
-
-        this._element.querySelector('.element__photo').addEventListener('click', () => {
-            this._imgCloseView();
-        })
+    _toggleLike() {
+        this._likeButton.classList.toggle('element__like_active');
     }
 
     getElement() {
         this._element = this._getElementFromTemplate();
-        this._element.querySelector('.element__photo').src = this._photo;
-        this._element.querySelector('.element__photo').alt = this._name;
-        this._element.querySelector('.element__title').textContent = this._name;
+
+        this._cardPhoto = this._element.querySelector('.element__photo');
+        this._cardPhoto.src = this._photo;
+        this._cardPhoto.alt = this._name;
+
+        this._cardTitle = this._element.querySelector('.element__title');
+        this._cardTitle.textContent = this._name;
 
         this._addEventListeners();
 
         return this._element;
+    }
+
+    _addEventListeners() {
+        this._deleteButton = this._element.querySelector('.element__delete');
+        this._deleteButton.addEventListener('click', () => {
+            this._deleteCard();
+        })
+
+        this._likeButton = this._element.querySelector('.element__like');
+        this._likeButton.addEventListener('click', () => {
+            this._toggleLike();
+        })
+
+        this._cardPhoto.addEventListener('click', () => {
+            this._handleCardClick(this._name, this._photo)
+        });
     }
 }
