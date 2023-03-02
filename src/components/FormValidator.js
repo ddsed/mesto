@@ -1,16 +1,7 @@
   // СПРИНТ 6
 
   // Валидация
-  export const configValidation = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__item',
-    submitButtonSelector: '.popup__submit-button',
-    inactiveButtonClass: 'popup__submit-button_inactive',
-    inputErrorClass: 'popup__item_type_error',
-    errorClass: 'popup__item-error_active'
-  };
-
-  export class FormValidator {
+  export default class FormValidator {
     constructor(config, formElement) {
       this._formElement = formElement;
    

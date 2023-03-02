@@ -1,7 +1,8 @@
 import './index.css'; 
 import { initialCards } from '../utils/initial-cards.js';
+import { configValidation } from '../utils/config-validation.js';
 import Card from '../components/Card.js';
-import { FormValidator, configValidation } from '../components/FormValidator.js';
+import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
@@ -32,18 +33,17 @@ function createCard(item) {
 
 //Изначальные карточки
 const cardList = new Section({
-  items: initialCards,
+  items: initialCards.reverse(),
   renderer: (item) => {
     const initialCard = createCard(item);
     cardList.addItem(initialCard);
   },
 }, config.selectorCardsList);
 
-cardList.renderItems(initialCards.reverse());
+cardList.renderItems();
 
 //Большая картинка
-const popupImage = document.querySelector('.popup_type_image');
-const popupWithImage = new PopupWithImage(popupImage);
+const popupWithImage = new PopupWithImage('.popup_type_image');
 
 popupWithImage.setEventListeners();
 
@@ -65,7 +65,7 @@ const buttonAdd = document.querySelector('.profile__add-button');
 buttonAdd.addEventListener('click', openAddPopup);
 
 //Внесение информации новой карточки в попап
-const infoAddCardPopup = new PopupWithForm(popupAddNewCard, handleSubmitForm);
+const infoAddCardPopup = new PopupWithForm('.popup_type_add-card', handleSubmitForm);
 const formCreateNewCard = document.querySelector('.popup__form_type_add-card');
 const newCardNameInput = formCreateNewCard.querySelector('.popup__item_el_name');
 const newCardDescriptionInput = formCreateNewCard.querySelector('.popup__item_el_description');
@@ -80,12 +80,9 @@ infoAddCardPopup.setEventListeners();
 
 //Попап редактирования профиля
 //Изначальные данные
-const userName = document.querySelector('.profile__name');
-const userDescription = document.querySelector('.profile__description');
-
 const userInfo = new UserInfo({
-  profileName: userName,
-  profileDescription: userDescription,
+  profileName: '.profile__name',
+  profileDescription:'.profile__description',
 });
 
 //Открытие
@@ -107,7 +104,7 @@ const buttonEdit = document.querySelector('.profile__edit-button');
 buttonEdit.addEventListener('click', openProfilePopup);
 
 //Внесение инфоромации в попап профиля
-const infoEditProfilePopup = new PopupWithForm(popupEditProfile, editProfileData);
+const infoEditProfilePopup = new PopupWithForm('.popup_type_edit-profile', editProfileData);
 
 function editProfileData(data) {
   userInfo.setUserInfo(data = {profileName: nameInput.value, profileDescription: descriptionInput.value});
