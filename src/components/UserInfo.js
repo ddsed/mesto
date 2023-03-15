@@ -7,13 +7,13 @@ export default class UserInfo {
     getUserInfo() {
         const info = {
             profileName: this._profileName.textContent,
-            profileDescription: this._profileDescription.textContent,
+            profileDescription: this._profileDescription.textContent
         };
         return info;
     }
 
-    setUserInfo({ profileName, profileDescription }) {
-        this._profileName.textContent = profileName;
-        this._profileDescription.textContent = profileDescription;
+    setUserInfo(formData) {
+        this._profileName.textContent = formData.name;
+        this._profileDescription.textContent = formData.about;
     }
 }
