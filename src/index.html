@@ -15,7 +15,11 @@
 
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="<%=require('./images/profile-photo.jpg')%>" alt="Фото">
+		
+		<img class="profile__avatar" src="<%=require('./images/profile-photo.jpg')%>" alt="Фото">
+		<div class="profile__avatar-container">	
+			<button class="profile__avatar-button button" type="button"></button>
+		</div>
 
         <div class="profile__info">
           <h1 class="profile__name">Даша Седова</h1>
@@ -81,6 +85,20 @@
 				<button class="popup__close-button button" type="button"></button>
 				<h2 class="popup__title popup__title_type_delete">Вы уверены?</h2>
 				<button class="popup__submit-button popup__submit-button_type_confirm-delete" type="submit">Да</button>
+			</div>
+		</div>
+
+		<div class="popup popup_type_avatar">
+			<div class="popup__container">
+				<button class="popup__close-button button" type="button"></button>
+				<form class="popup__form popup__form_type_avatar" name="popup-form-avatar">
+					<h2 class="popup__title popup__title_type_avatar">Обновить аватар</h2>
+
+					<input type="url" id="place-url-input" class="popup__item popup__item_el_description popup__item_type_avatar" name="form-description" placeholder="Ссылка на аватар" required >
+					<span class="place-url-input-error popup__item-error"></span>
+					
+					<button class="popup__submit-button popup__submit-button_type_avatar" type="submit">Сохранить</button>
+				</form>
 			</div>
 		</div>
 

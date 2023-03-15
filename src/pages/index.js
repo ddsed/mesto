@@ -121,14 +121,15 @@ const api = new Api({
 //Валидация
 const popupAddNewCard = document.querySelector('.popup_type_add-card');
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
+const popupAvatar = document.querySelector('.popup_type_avatar');
 
 const validationProfile = new FormValidator(configValidation, popupEditProfile);
 const validationNewCard = new FormValidator(configValidation, popupAddNewCard);
+const validationAvatar = new FormValidator(configValidation, popupAvatar);
 
 validationProfile.enableValidation();
 validationNewCard.enableValidation();
-
-
+validationAvatar.enableValidation();
 
 
 //КАРТОЧКИ
@@ -233,9 +234,10 @@ let currentUserId;
 const userInfo = new UserInfo({
   profileName: '.profile__name',
   profileDescription:'.profile__description',
+  profileAvatar: '.profile__avatar',
 });
 
-//Открытие
+//Открытие попапа редактирования профиля
 const formEditProfile = popupEditProfile.querySelector('.popup__form_type_edit-profile');
 const nameInput = formEditProfile.querySelector('.popup__item_el_name');
 const descriptionInput = formEditProfile.querySelector('.popup__item_el_description');
@@ -253,7 +255,7 @@ function openProfilePopup() {
 const buttonEdit = document.querySelector('.profile__edit-button');
 buttonEdit.addEventListener('click', openProfilePopup);
 
-//Внесение инфоромации в попап профиля
+//Внесение инфоромации в попап редактирования профиля
 const infoEditProfilePopup = new PopupWithForm('.popup_type_edit-profile', {
   handleSubmitForm: (data) => {
     console.log(data);
@@ -269,6 +271,31 @@ const infoEditProfilePopup = new PopupWithForm('.popup_type_edit-profile', {
 });
 
 infoEditProfilePopup.setEventListeners();
+
+//Попап редактирования аватара
+//Открытие попапа редактирования аватара
+const editAvatarButton = document.querySelector('.profile__avatar-button');
+
+editAvatarButton.addEventListener("click", () => {
+  validationAvatar.resetValidation();
+  avatarPopup.open();
+});
+
+//Внесение инфоромации в попап редактирования аватара
+const avatarPopup = new PopupWithForm('.popup_type_avatar', {
+  handleSubmitForm: (avatar) => {
+    return api.changeAvatar(avatar)
+      .then((data) => {
+        userInfo.changeAvatarInfo(data);
+        avatarPopup.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+});
+
+avatarPopup.setEventListeners();
 
 Promise.all([api.getUserInfoApi()], [api.getInitialCards()])
   .then(([user, cards]) => {
