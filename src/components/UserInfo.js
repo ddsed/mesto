@@ -12,8 +12,8 @@ export default class UserInfo {
         return info;
     }
 
-    setUserInfo(formData) {
-        this._profileName.textContent = formData.name;
-        this._profileDescription.textContent = formData.about;
+    setUserInfo(data) {
+        this._profileName.textContent = data.name;
+        this._profileDescription.textContent = data.about;
     }
 }

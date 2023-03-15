@@ -32,27 +32,30 @@ export default class Api {
           method: "PATCH",
           headers: this._headers,
           body: JSON.stringify({
-            name: data.profileName,
-            about: data.profileDescription
+            name: data['form-name'],
+            about: data['form-description']
           }),
         })
         .then(this._checkPromiseStatus);
       }
 
-    /*createNewCard(item) {
-        return fetch("https://mesto.nomoreparties.co/v1/cohort-61/cards", {   
+    createNewCard(data) {
+        return fetch(`${this._baseUrl}/cards`, {   
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                authorization: "25ba17d7-1766-40fc-b636-0f2523c53d74"
-            },
-            body: JSON.stringify(item)
+            headers: this._headers,
+            body: JSON.stringify({
+                name: data['form-name'],
+                link: data['form-description']
+            }),
         })
-        .then((res) => {
-            if(res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
-        });
-    } */
+        .then(this._checkPromiseStatus);
+    }
+
+    deleteCardApi(id) {
+        return fetch(`${this._baseUrl}/cards/${id}`, {
+          method: "DELETE",
+          headers: this._headers,
+        })
+        .then(this._checkPromiseStatus);
+      }
 }
