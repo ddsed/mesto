@@ -9,105 +9,6 @@ import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 import PopupConfirmDelete from '../components/PopupConfirmDelete.js';
 
-/*
-//Карточки
-const config = {
-  selectorCardsList: '.elements__grid-container',
-  selectorTemplateCard: '.cards-template',
-}
-
-//Создание карточки
-function createCard(item) {
-  const card = new Card(item, config.selectorTemplateCard, handleCardClick);
-  return card.getElement();
-}
-
-//Изначальные карточки 8ПР
-const cardList = new Section({
-  items: initialCards.reverse(),
-  renderer: (item) => {
-    const initialCard = createCard(item);
-    cardList.addItem(initialCard);
-  },
-}, config.selectorCardsList);
-
-cardList.renderItems();
-
-//Большая картинка
-const popupWithImage = new PopupWithImage('.popup_type_image');
-
-popupWithImage.setEventListeners();
-
-function handleCardClick(name, link) {
-  popupWithImage.open(name, link);
-};
-
-//Попап добавления новых карточек
-//Открытие
-function openAddPopup(evt) {
-  evt.preventDefault();
-  validationNewCard.resetValidation();
-
-  infoAddCardPopup.open();
-};
-
-const buttonAdd = document.querySelector('.profile__add-button');
-buttonAdd.addEventListener('click', openAddPopup);
-
-//Внесение информации новой карточки в попап
-const infoAddCardPopup = new PopupWithForm('.popup_type_add-card', handleSubmitForm);
-const formCreateNewCard = document.querySelector('.popup__form_type_add-card');
-const newCardNameInput = formCreateNewCard.querySelector('.popup__item_el_name');
-const newCardDescriptionInput = formCreateNewCard.querySelector('.popup__item_el_description');
-
-function handleSubmitForm(data) {
-  cardList.addItem(createCard(data = {name: newCardNameInput.value, link: newCardDescriptionInput.value}));
-  infoAddCardPopup.close();
-};
-
-infoAddCardPopup.setEventListeners();
-
-
-//Попап редактирования профиля
-//Изначальные данные
-const userInfo = new UserInfo({
-  profileName: '.profile__name',
-  profileDescription:'.profile__description',
-});
-
-//Открытие
-const formEditProfile = popupEditProfile.querySelector('.popup__form_type_edit-profile');
-const nameInput = formEditProfile.querySelector('.popup__item_el_name');
-const descriptionInput = formEditProfile.querySelector('.popup__item_el_description');
-
-function openProfilePopup() {
-  const info = userInfo.getUserInfo()
-  nameInput.value = info.profileName;
-  descriptionInput.value = info.profileDescription;
-
-  validationProfile.resetValidation();
-
-  infoEditProfilePopup.open();
-}
-
-const buttonEdit = document.querySelector('.profile__edit-button');
-buttonEdit.addEventListener('click', openProfilePopup);
-
-//Внесение инфоромации в попап профиля
-const infoEditProfilePopup = new PopupWithForm('.popup_type_edit-profile', editProfileData);
-
-function editProfileData(data) {
-  userInfo.setUserInfo(data = {profileName: nameInput.value, profileDescription: descriptionInput.value});
-  infoEditProfilePopup.close();
-};
-
-infoEditProfilePopup.setEventListeners();
-*/
-
-
-
-
-
 
 //9ПР
 const api = new Api({
@@ -170,6 +71,28 @@ const createCard = (item, currentUserId) => {
         });
       });
     },
+
+    handleAddLike: (cardId) => {
+      api.addLike(cardId)
+      .then((res) => {
+        card.toggleLike();
+        card.handleLikesCount(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    },
+
+    handleDeleteLike: (cardId) => {
+      api.deleteLike(cardId) 
+      .then((res) => {
+        card.toggleLike();
+        card.handleLikesCount(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    }
   })
   return card.getElement();
 }
@@ -210,16 +133,9 @@ const infoAddCardPopup = new PopupWithForm('.popup_type_add-card', {
 
 infoAddCardPopup.setEventListeners();
 
-
 //Попап удаления карточки
 const popupConfirmDelete = new PopupConfirmDelete('.popup_type_delete');
 popupConfirmDelete.setEventListeners();
-
-
-
-
-
-
 
 
 
