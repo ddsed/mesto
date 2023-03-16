@@ -34,6 +34,8 @@ validationAvatar.enableValidation();
 
 
 //КАРТОЧКИ
+const submitButton = document.querySelector('.popup__submit-button');
+
 //Изначальные карточки
 const config = {
   selectorCardsList: '.elements__grid-container',
@@ -102,9 +104,6 @@ const popupWithImage = new PopupWithImage('.popup_type_image');
 popupWithImage.setEventListeners();
 
 //Попап добавления новых карточек
-const formCreateNewCard = document.querySelector('.popup__form_type_add-card');
-const newCardNameInput = formCreateNewCard.querySelector('.popup__item_el_name');
-const newCardDescriptionInput = formCreateNewCard.querySelector('.popup__item_el_description');
 
 //Открытие
 function openAddPopup(evt) {
@@ -127,7 +126,7 @@ const infoAddCardPopup = new PopupWithForm('.popup_type_add-card', {
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
   },
 });
 
