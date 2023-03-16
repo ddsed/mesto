@@ -1,5 +1,20 @@
 import './index.css'; 
-import { configValidation } from '../utils/config-validation.js';
+import { configValidation, 
+  config, 
+  popupAddNewCard, 
+  popupEditProfile, 
+  popupAvatar, 
+  buttonAdd, 
+  submitButtonCard, 
+  initialButtonCardText,
+  nameInput,
+  descriptionInput,
+  buttonEdit,
+  submitButtonProfile,
+  initialButtonProfileText,
+  editAvatarButton,
+  submitButtonAvatar,
+  initialButtonAvatarText } from '../utils/constants.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
@@ -20,10 +35,6 @@ const api = new Api({
 });
 
 //Валидация
-const popupAddNewCard = document.querySelector('.popup_type_add-card');
-const popupEditProfile = document.querySelector('.popup_type_edit-profile');
-const popupAvatar = document.querySelector('.popup_type_avatar');
-
 const validationProfile = new FormValidator(configValidation, popupEditProfile);
 const validationNewCard = new FormValidator(configValidation, popupAddNewCard);
 const validationAvatar = new FormValidator(configValidation, popupAvatar);
@@ -34,14 +45,7 @@ validationAvatar.enableValidation();
 
 
 //КАРТОЧКИ
-const submitButton = document.querySelector('.popup__submit-button');
-
 //Изначальные карточки
-const config = {
-  selectorCardsList: '.elements__grid-container',
-  selectorTemplateCard: '.cards-template',
-}
-
 const cardList = new Section({
   renderer: (item) => {
     const initialCard = createCard(item, currentUserId);
@@ -113,12 +117,12 @@ function openAddPopup(evt) {
   infoAddCardPopup.open();
 };
 
-const buttonAdd = document.querySelector('.profile__add-button');
 buttonAdd.addEventListener('click', openAddPopup);
 
 //Внесение информации новой карточки в попап
 const infoAddCardPopup = new PopupWithForm('.popup_type_add-card', {
   handleSubmitForm: (data) => {
+    submitButtonCard.textContent = 'Сохранение...';
     return api.createNewCard(data)
       .then((data) => {
         cardList.addItem(createCard(data, currentUserId));
@@ -126,6 +130,9 @@ const infoAddCardPopup = new PopupWithForm('.popup_type_add-card', {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        submitButtonCard.textContent = initialButtonCardText;
       })
   },
 });
@@ -153,10 +160,6 @@ const userInfo = new UserInfo({
 });
 
 //Открытие попапа редактирования профиля
-const formEditProfile = popupEditProfile.querySelector('.popup__form_type_edit-profile');
-const nameInput = formEditProfile.querySelector('.popup__item_el_name');
-const descriptionInput = formEditProfile.querySelector('.popup__item_el_description');
-
 function openProfilePopup() {
   const info = userInfo.getUserInfo();
   nameInput.value = info.profileName;
@@ -167,13 +170,12 @@ function openProfilePopup() {
   infoEditProfilePopup.open();
 }
 
-const buttonEdit = document.querySelector('.profile__edit-button');
 buttonEdit.addEventListener('click', openProfilePopup);
 
 //Внесение инфоромации в попап редактирования профиля
 const infoEditProfilePopup = new PopupWithForm('.popup_type_edit-profile', {
   handleSubmitForm: (data) => {
-    console.log(data);
+    submitButtonProfile.textContent = 'Сохранение...';
     return api.editUserInfo(data)
       .then((res) => {
         userInfo.setUserInfo(res);
@@ -181,7 +183,10 @@ const infoEditProfilePopup = new PopupWithForm('.popup_type_edit-profile', {
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
+      .finally(() => {
+        submitButtonProfile.textContent = initialButtonProfileText;
+      })
   },
 });
 
@@ -189,8 +194,6 @@ infoEditProfilePopup.setEventListeners();
 
 //Попап редактирования аватара
 //Открытие попапа редактирования аватара
-const editAvatarButton = document.querySelector('.profile__avatar-button');
-
 editAvatarButton.addEventListener("click", () => {
   validationAvatar.resetValidation();
   avatarPopup.open();
@@ -199,6 +202,7 @@ editAvatarButton.addEventListener("click", () => {
 //Внесение инфоромации в попап редактирования аватара
 const avatarPopup = new PopupWithForm('.popup_type_avatar', {
   handleSubmitForm: (avatar) => {
+    submitButtonAvatar.textContent = 'Сохранение...';
     return api.changeAvatar(avatar)
       .then((data) => {
         userInfo.changeAvatarInfo(data);
@@ -206,6 +210,9 @@ const avatarPopup = new PopupWithForm('.popup_type_avatar', {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        submitButtonAvatar.textContent = initialButtonAvatarText;
       });
   },
 });

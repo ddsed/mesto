@@ -14,17 +14,17 @@ export default class UserInfo {
         return info;
     }
 
-    _getAvatarInfo(data) {
+    _setAvatarInfo(data) {
         this._profileAvatar.src = data.avatar;
     }
 
     changeAvatarInfo(data) {
-        this._getAvatarInfo(data);
+        this._setAvatarInfo(data);
     }
 
     setUserInfo(data) {
         this._profileName.textContent = data.name;
         this._profileDescription.textContent = data.about;
-        this._getAvatarInfo(data);
+        this._setAvatarInfo(data);
     }
 }
