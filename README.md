@@ -1,14 +1,12 @@
-# Учебный проект: Mesto  
+# Study project: Mesto
   
-Здесь будет проект сервиса Mesto: интерактивной страницы, куда можно добавлять фотографии, удалять их и ставить лайки.  
+It is a repository for Mesto: interactive page, where you can add, delte and like cards with photos.    
   
-Выполнена верстка сайта, а также написана логика на JavaScript с использованием Webpack и запросов на сервер.  
-  
-Изученные и использованные технологии:  
-  
-* _JS:_ webpack и организация кода соответственно стандарту ООП, работа с API и запросами на сервер;
-* _HTML:_ методология БЭМ, идентификаторы, псевдоклассы, верстка форм и template-элементов;  
-* _CSS:_ flex-box, grid-layout, адаптивная верстка, использование относительных величин, media queries, плавное открытие попапов посредством visibility;  
-* _GIT:_ работа с ветками, деплой, публикация на git-pages, стандарт “Conventional Commits”.  
+Tech stack and tools:  
 
-Реализацию проекта можно увидеть [тут](https://ddsed.github.io/mesto/) 
+* _JS:_ webpack, object-oriented programming, API;
+* _HTML:_ pseudo-classes, forms, template-elements;  
+* _CSS:_ flex-box, grid-layout, adaptive layout, media queries, animation;  
+* _GIT:_ branches, deploy on git-pages, “Conventional Commits”.
+
+[Deploy link](https://ddsed.github.io/mesto/) 
